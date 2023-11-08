@@ -1,0 +1,33 @@
+.gameMode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  .btn {
+    display: flex;
+    gap: 20px;
+    button {
+      padding: 14px 18px;
+      font-size: 24px;
+      background-color: #0077FF;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #0055CC;
+      }
+  
+   
+    }
+  }
+ 
+
+  p {
+    font-size: 24px;
+    color: #333333;
+  }
+}
