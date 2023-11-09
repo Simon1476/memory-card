@@ -1,0 +1,13 @@
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  .score-details {
+    display: flex;
+    gap: 12px;
+    p {
+    }
+  }
+}
