@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import uniqid from "uniqid";
 
 const usePokemon = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -27,14 +28,28 @@ const usePokemon = () => {
     while (pokemonLists.length < number && tries < 100) {
       const randomId = Math.floor(Math.random() * POKEMON_LIST_NUMBERS) + 1;
 
-      const isDuplicateIdFound = pokemonLists.find(({ id }) => id === randomId);
+      const isDuplicateIdFound = pokemonLists.find((id) => id === randomId);
       if (isDuplicateIdFound) tries++;
       else pokemonLists.push(randomId);
     }
 
     return await Promise.all(pokemonLists.map(getPokemon));
   };
-  return { getPokemon, getPokemonLists, pokemons, setPokemons };
+
+  const shufflePokemonLists() {
+    const pokemonDeck = [...pokemons];
+    const shuffledPokemonDeck = [];
+    while(pokemonDeck.length) {
+      const index = Math.floor(Math.random() * pokemonDeck.length);
+      const pokemonCard = pokemonDeck[index];
+
+      pokemonCard.id = uniqid();
+      shuffledPokemonDeck.push(card);
+      pokemonDeck.splice(index, 1);
+    }
+    setPokemons(shuffledPokemonDeck);
+  }
+  return { getPokemon, getPokemonLists, shufflePokemonLists, pokemons, setPokemons, };
 };
 
 export default usePokemon;
