@@ -1,0 +1,12 @@
+body {
+  background: url("/pokemonBg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+#root, .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+

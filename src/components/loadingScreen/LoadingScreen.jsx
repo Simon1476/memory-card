@@ -1,6 +1,6 @@
 import React from "react";
 import "./LoadingScreen.scss";
-const LoadingPage = () => {
+const LoadingScreen = () => {
   return (
     <div className="loading-screen">
       <img src="/pokeball.png" alt="Pokeball" />
@@ -9,4 +9,4 @@ const LoadingPage = () => {
   );
 };
 
-export default LoadingPage;
+export default LoadingScreen;
