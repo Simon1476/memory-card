@@ -1,11 +1,11 @@
 import React from "react";
 import "./Score.scss";
-const Score = () => {
+const Score = ({ gameScore, gameRound }) => {
   return (
     <div className="score">
       <div className="score-details">
         <p className="current-score">
-          Score: <span>5</span>
+          Score: <span>{gameScore}</span>
         </p>
         <p className="best-score">
           Best Score 💎 <span>4</span>
@@ -13,7 +13,10 @@ const Score = () => {
       </div>
       <div className="progress">
         <p>
-          <span>1 / 5</span> Round
+          <span>
+            {gameScore} / {gameRound}
+          </span>
+          Round
         </p>
       </div>
     </div>
