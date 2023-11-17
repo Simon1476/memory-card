@@ -1,9 +1,9 @@
 import "./Card.scss";
 
-const Card = ({ card }) => {
+const Card = ({ card, cardClick }) => {
   return (
     <div className="card">
-      <button type="button">
+      <button type="button" onClick={cardClick}>
         <img src={card.frontDefault} alt={card.name} />
         <p>{card.name}</p>
       </button>
