@@ -38,6 +38,14 @@ function App() {
     setShowFront(true);
   };
 
+  useEffect(() => {
+    const isWin = gameRound === gameScore;
+    if (isWin) {
+      setGameStatus("Win");
+      setGameFinish(true);
+    }
+  }, [gameScore, gameRound]);
+
   const increaseScore = () => {
     setGameScore((prevScore) => prevScore + 1);
   };
