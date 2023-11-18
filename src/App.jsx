@@ -3,7 +3,7 @@ import "./App.css";
 import GameMode from "./components/gameMode/GameMode";
 import GameBoard from "./components/gameBoard/gameBoard";
 import usePokemon from "./utils/usePokemon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingScreen from "./components/loadingScreen/LoadingScreen";
 import Score from "./components/score/Score";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -18,7 +18,7 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
   const [gameScore, setGameScore] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [cardsShowing, setCardsShowing] = useState(false);
+  const [showFront, setShowFront] = useState(true);
 
   const { shufflePokemonLists, getPokemonLists, pokemons, setPokemons } =
     usePokemon();
@@ -35,7 +35,7 @@ function App() {
     setIsLoading(false);
 
     await sleep(CARD_SLEEP_TIME);
-    setCardsShowing(true);
+    setShowFront(true);
   };
 
   const increaseScore = () => {
@@ -65,10 +65,6 @@ function App() {
     setGameStart(false);
     setGameScore(0);
   };
-  // const handleGameFinish = () => {
-  //   setGameStart(false);
-  //   setGameScore(0);
-  // };
 
   const markCardAsClicked = (index) => {
     const updatedPokemons = [...pokemons];
@@ -78,6 +74,8 @@ function App() {
   };
 
   const handleCardClick = async (cardIndex) => {
+    setShowFront(false);
+
     const card = pokemons[cardIndex];
     if (card.isClicked) {
       setGameStatus("Lose");
@@ -91,14 +89,8 @@ function App() {
     const everyCardClicked = pokemons.every((card) => card.isClicked);
     if (!everyCardClicked) {
       await new Promise((resolve) => setTimeout(resolve, CARD_SLEEP_TIME));
-      setCardsShowing(true);
       shufflePokemonLists();
-    }
-
-    const isWin = pokemons.length === gameScore;
-    if (isWin) {
-      setGameStatus("Win");
-      setGameFinish(true);
+      setShowFront(true);
     }
   };
 
@@ -116,6 +108,7 @@ function App() {
           cardClick={handleCardClick}
           onRestart={handleGameRestart}
           onQuit={handleGameExit}
+          showFront={showFront}
         />
       )}
       {!gameStart && (

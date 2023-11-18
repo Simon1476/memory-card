@@ -2,6 +2,7 @@ import Card from "../card/Card";
 import Score from "../score/Score";
 import "./GameBoard.scss";
 import GameOverModal from "./../gameOvermodal/GameOverModal";
+import { useState } from "react";
 
 const GameBoard = ({
   cards,
@@ -12,16 +13,22 @@ const GameBoard = ({
   gameStatus,
   gameFinish,
   onRestart,
+  onQuit,
+  showFront,
 }) => {
   return (
     <div className="game-board">
-      <div className="title">Pokemon Memory Match</div>
+      <button className="title" onClick={onQuit}>
+        <img src="/pikachu1.png" alt="pikachu" />
+        <span>Pokemon</span>
+      </button>
       <Score gameScore={gameScore} gameRound={gameRound} />
       {gameFinish && (
         <GameOverModal
           gameStatus={gameStatus}
-          onRestart={onRestart}
           gameRound={gameRound}
+          onRestart={onRestart}
+          onQuit={onQuit}
         />
       )}
       <div className={`cards ${gameMode}`}>
@@ -32,6 +39,7 @@ const GameBoard = ({
             cardClick={() => {
               cardClick(index);
             }}
+            showFront={showFront}
           />
         ))}
       </div>

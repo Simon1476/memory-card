@@ -5,14 +5,27 @@
   padding: 20px;
 
   .title {
+    display: flex;
+    align-items: center;
     font-size: 24px;
     font-weight: bold;
     color: #FF0000; /* Red color for the title */
     text-align: center;
     padding: 10px;
+    border: none;
     background-color: inherit; /* White background for the title */
     border-radius: 5px;
     margin-bottom: 10px;
+    cursor: pointer;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+
+    span {
+      padding-top: 20px;
+    }
   }
   .cards {
     display: grid;
