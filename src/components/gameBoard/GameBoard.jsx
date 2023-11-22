@@ -8,6 +8,7 @@ const GameBoard = ({
   cards,
   gameMode,
   gameScore,
+  bestScore,
   cardClick,
   gameRound,
   gameStatus,
@@ -22,7 +23,11 @@ const GameBoard = ({
         <img src="/pikachu1.png" alt="pikachu" />
         <span>Pokemon</span>
       </button>
-      <Score gameScore={gameScore} gameRound={gameRound} />
+      <Score
+        gameScore={gameScore}
+        gameRound={gameRound}
+        bestScore={bestScore}
+      />
       {gameFinish && (
         <GameOverModal
           gameStatus={gameStatus}

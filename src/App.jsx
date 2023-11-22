@@ -5,8 +5,18 @@ import GameBoard from "./components/gameBoard/gameBoard";
 import usePokemon from "./utils/usePokemon";
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/loadingScreen/LoadingScreen";
-import Score from "./components/score/Score";
+import CardFilp from "./assets/card-flip.mp3";
+import win from "./assets/win.mp3";
+import lose from "./assets/lose.mp3";
+import playAudio from "./utils/playAudio";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const fildCardAudio = new Audio(CardFilp);
+const gameWin = new Audio(win);
+const gameLose = new Audio(lose);
+fildCardAudio.volume = 0.2;
+gameWin.volume = 0.2;
+gameLose.volume = 0.2;
 
 function App() {
   const [gameStart, setGameStart] = useState(false);
@@ -15,7 +25,9 @@ function App() {
   const [gameMode, setGameMode] = useState("");
   const [gameStatus, setGameStatus] = useState("win");
 
-  const [bestScore, setBestScore] = useState(0);
+  const [bestScore, setBestScore] = useState(
+    localStorage.getItem("bets-score") || 0
+  );
   const [gameScore, setGameScore] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [showFront, setShowFront] = useState(true);
@@ -43,8 +55,14 @@ function App() {
     if (isWin) {
       setGameStatus("Win");
       setGameFinish(true);
+      playAudio(gameWin);
     }
-  }, [gameScore, gameRound]);
+
+    if (gameScore > bestScore) {
+      setBestScore(gameScore);
+      localStorage.setItem("best-score", gameScore);
+    }
+  }, [gameScore, gameRound, bestScore]);
 
   const increaseScore = () => {
     setGameScore((prevScore) => prevScore + 1);
@@ -86,6 +104,7 @@ function App() {
 
     const card = pokemons[cardIndex];
     if (card.isClicked) {
+      playAudio(gameLose);
       setGameStatus("Lose");
       setGameFinish(true);
       return;
@@ -96,6 +115,8 @@ function App() {
 
     const everyCardClicked = pokemons.every((card) => card.isClicked);
     if (!everyCardClicked) {
+      playAudio(fildCardAudio);
+
       await new Promise((resolve) => setTimeout(resolve, CARD_SLEEP_TIME));
       shufflePokemonLists();
       setShowFront(true);
@@ -110,6 +131,7 @@ function App() {
           cards={pokemons}
           gameMode={gameMode}
           gameScore={gameScore}
+          bestScore={bestScore}
           gameRound={gameRound}
           gameStatus={gameStatus}
           gameFinish={gameFinish}
