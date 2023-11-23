@@ -92,6 +92,19 @@ function App() {
     setGameScore(0);
   };
 
+  const handleGameLevelUp = () => {
+    const pokemonLists = getPokemonLists(pokemons.length + INCREMENT_STEP);
+    setGameStart(true);
+    setGameFinish(false);
+    setIsLoading(true);
+    setGameRound(pokemons.length + INCREMENT_STEP);
+
+    setTimeout(async () => {
+      setPokemons(await pokemonLists);
+      setIsLoading(false);
+      setShowFront(true);
+    }, CARD_SLEEP_TIME);
+  };
   const markCardAsClicked = (index) => {
     const updatedPokemons = [...pokemons];
     updatedPokemons[index].isClicked = true;
@@ -138,6 +151,7 @@ function App() {
           cardClick={handleCardClick}
           onRestart={handleGameRestart}
           onQuit={handleGameExit}
+          onContinue={handleGameLevelUp}
           showFront={showFront}
         />
       )}

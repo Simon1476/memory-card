@@ -15,6 +15,7 @@ const GameBoard = ({
   gameFinish,
   onRestart,
   onQuit,
+  onContinue,
   showFront,
 }) => {
   return (
@@ -34,6 +35,7 @@ const GameBoard = ({
           gameRound={gameRound}
           onRestart={onRestart}
           onQuit={onQuit}
+          onContinue={onContinue}
         />
       )}
       <div className={`cards ${gameMode}`}>

@@ -1,23 +1,34 @@
 import React from "react";
 import "./GameOverModal.scss";
 
-const GameOverModal = ({ gameStatus, onRestart, gameRound, onQuit }) => {
+const GameOverModal = ({
+  gameStatus,
+  onRestart,
+  gameRound,
+  onQuit,
+  onContinue,
+}) => {
   return (
     <div className="overlay">
       <div className="game-over-modal">
         <h4>You {gameStatus}</h4>
-        <button
-          type="button"
-          className="restart-btn"
-          onClick={() => {
-            onRestart(gameRound);
-          }}
-        >
-          Restart
-        </button>
-        <button className="exit-btn" onClick={onQuit}>
-          ⚔
-        </button>
+        <div className="btn">
+          <button
+            type="button"
+            className="restart-btn"
+            onClick={() => {
+              onRestart(gameRound);
+            }}
+          >
+            Restart
+          </button>
+          <button type="button" className="exit-btn" onClick={onQuit}>
+            Exit
+          </button>
+          <button type="button" onClick={onContinue}>
+            Level Up
+          </button>
+        </div>
       </div>
     </div>
   );

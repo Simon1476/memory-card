@@ -33,18 +33,24 @@
     color: #000; /* 글자 색상 설정 */
     font-size: 40px;
   }
+  div {
+    display: flex;
+    gap: 20px;
+    button {
+      width: 150px;
 
-  button {
-    width: 70%;
-    border-radius: 20px;
-    font-size: 26px;
-    margin-bottom: 25px;
-    padding: 15px 30px;
-    cursor: pointer;
-    background-color: #F2D479; /* 배경 색상을 피카츄의 색상으로 설정 */
-    border: none;
-    color: #000; /* 글자 색상 설정 */
+      background-color: #F2D479; 
+      border: none;
+      border-radius: 20px;
+
+      font-size: 26px;
+      margin-bottom: 25px;
+      padding: 15px 30px;
+      cursor: pointer;
+      color: #000; 
+    }
   }
+ 
 
   
 }

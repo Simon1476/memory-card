@@ -28,23 +28,25 @@
     }
   }
   .cards {
-    display: grid;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     // grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
     // max-width: 800px; /* Adjust the max-width as needed */
     margin-top: 20px;
   }
 
-  .cards.easy {
-    grid-template-columns: repeat(5, 1fr);
-  }
+  // .cards.easy {
+  //   grid-template-columns: repeat(5, 1fr);
+  // }
   
-  .cards.medium {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  // .cards.medium {
+  //   grid-template-columns: repeat(4, 1fr);
+  // }
 
-  .cards.hard {
-    grid-template-columns: repeat(5, 1fr);
-  }
+  // .cards.hard {
+  //   grid-template-columns: repeat(5, 1fr);
+  // }
   
 }
