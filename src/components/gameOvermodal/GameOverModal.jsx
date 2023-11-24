@@ -25,9 +25,11 @@ const GameOverModal = ({
           <button type="button" className="exit-btn" onClick={onQuit}>
             Exit
           </button>
-          <button type="button" onClick={onContinue}>
-            Level Up
-          </button>
+          {gameStatus === "Win" && (
+            <button type="button" onClick={onContinue}>
+              Level Up
+            </button>
+          )}
         </div>
       </div>
     </div>
