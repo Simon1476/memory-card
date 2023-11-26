@@ -1,11 +1,11 @@
 import "./GameMode.scss";
 import PropTypes from "prop-types";
-
+import pokemonTitle from "../../assets/pokemon-title.png";
 const GameMode = ({ gameOn, handleChangeGameMode }) => {
   return (
     <div className="gameMode">
       <div className="title">
-        <img src="./pokemon-title.png" alt="pokemon-title" />
+        <img src={pokemonTitle} alt="pokemon-title" />
       </div>
       <div className="btn">
         <button

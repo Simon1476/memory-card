@@ -3,6 +3,7 @@ import Card from "../card/Card";
 import Score from "../score/Score";
 import "./GameBoard.scss";
 import GameOverModal from "./../gameOvermodal/GameOverModal";
+import pikaChu1 from "../../assets/pikachu1.png";
 
 const GameBoard = ({
   cards,
@@ -21,7 +22,7 @@ const GameBoard = ({
   return (
     <div className="game-board">
       <button className="title" onClick={onQuit}>
-        <img src="/pikachu1.png" alt="pikachu" />
+        <img src={pikaChu1} alt="pikachu" />
         <span>Pokemon</span>
       </button>
       <Score

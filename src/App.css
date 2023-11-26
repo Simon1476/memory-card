@@ -1,5 +1,5 @@
 body {
-  background: url("/pokemonBg.jpg") no-repeat center center fixed;
+  background: url("./assets/pokemonBg.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 

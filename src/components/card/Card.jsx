@@ -1,5 +1,7 @@
 import "./Card.scss";
 import PropTypes from "prop-types";
+import cardBack from "../../assets/card-back.png";
+
 const Card = ({ card, cardClick, showFront }) => {
   return (
     <div className="card-container">
@@ -12,7 +14,7 @@ const Card = ({ card, cardClick, showFront }) => {
         </div>
       ) : (
         <div className="card back">
-          <img src="/card-back.png" alt="" />
+          <img src={cardBack} alt="card-back" />
         </div>
       )}
     </div>
