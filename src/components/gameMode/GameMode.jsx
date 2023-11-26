@@ -5,7 +5,7 @@ const GameMode = ({ gameOn, handleChangeGameMode }) => {
   return (
     <div className="gameMode">
       <div className="title">
-        <img src="/pokemon-title.png" alt="pokemon-title" />
+        <img src="./pokemon-title.png" alt="pokemon-title" />
       </div>
       <div className="btn">
         <button
