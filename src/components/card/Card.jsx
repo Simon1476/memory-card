@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 import "./Card.scss";
-
+import PropTypes from "prop-types";
 const Card = ({ card, cardClick, showFront }) => {
   return (
     <div className="card-container">
@@ -20,4 +19,13 @@ const Card = ({ card, cardClick, showFront }) => {
   );
 };
 
+Card.propTypes = {
+  card: PropTypes.shape({
+    frontDefault: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    // Add more PropTypes for other properties of the 'card' object if necessary
+  }).isRequired,
+  cardClick: PropTypes.func.isRequired,
+  showFront: PropTypes.bool.isRequired,
+};
 export default Card;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./GameOverModal.scss";
 
 const GameOverModal = ({
@@ -34,6 +35,14 @@ const GameOverModal = ({
       </div>
     </div>
   );
+};
+
+GameOverModal.propTypes = {
+  gameStatus: PropTypes.string.isRequired,
+  onRestart: PropTypes.func.isRequired,
+  gameRound: PropTypes.number.isRequired,
+  onQuit: PropTypes.func.isRequired,
+  onContinue: PropTypes.func.isRequired,
 };
 
 export default GameOverModal;

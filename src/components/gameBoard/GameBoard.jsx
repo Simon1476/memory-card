@@ -1,8 +1,8 @@
+import PropTypes from "prop-types";
 import Card from "../card/Card";
 import Score from "../score/Score";
 import "./GameBoard.scss";
 import GameOverModal from "./../gameOvermodal/GameOverModal";
-import { useState } from "react";
 
 const GameBoard = ({
   cards,
@@ -52,6 +52,26 @@ const GameBoard = ({
       </div>
     </div>
   );
+};
+
+GameBoard.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      // Add more PropTypes for other properties of the 'card' object if necessary
+    })
+  ).isRequired,
+  gameMode: PropTypes.string.isRequired,
+  gameScore: PropTypes.number.isRequired,
+  bestScore: PropTypes.number.isRequired,
+  cardClick: PropTypes.func.isRequired,
+  gameRound: PropTypes.number.isRequired,
+  gameStatus: PropTypes.string.isRequired,
+  gameFinish: PropTypes.bool.isRequired,
+  onRestart: PropTypes.func.isRequired,
+  onQuit: PropTypes.func.isRequired,
+  onContinue: PropTypes.func.isRequired,
+  showFront: PropTypes.bool.isRequired,
 };
 
 export default GameBoard;

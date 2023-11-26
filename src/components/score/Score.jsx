@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Score.scss";
 const Score = ({ gameScore, gameRound, bestScore }) => {
   return (
@@ -23,4 +24,9 @@ const Score = ({ gameScore, gameRound, bestScore }) => {
   );
 };
 
+Score.propTypes = {
+  gameScore: PropTypes.number.isRequired,
+  gameRound: PropTypes.number.isRequired,
+  bestScore: PropTypes.number.isRequired,
+};
 export default Score;

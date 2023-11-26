@@ -1,4 +1,5 @@
 import "./GameMode.scss";
+import PropTypes from "prop-types";
 
 const GameMode = ({ gameOn, handleChangeGameMode }) => {
   return (
@@ -40,4 +41,8 @@ const GameMode = ({ gameOn, handleChangeGameMode }) => {
   );
 };
 
+GameMode.propTypes = {
+  gameOn: PropTypes.func.isRequired,
+  handleChangeGameMode: PropTypes.func.isRequired,
+};
 export default GameMode;
